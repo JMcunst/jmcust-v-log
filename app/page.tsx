@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React, { useMemo } from 'react';
 import Header from '../components/Header';
 import Category from '../components/Category';
 import History from '../components/History';
@@ -12,6 +13,9 @@ export default function Home() {
     { name: 'Solution Architect', lastYear: '2025' }
   ];
 
+  const maxYear = useMemo(() => Math.max(...categories.map(c => parseInt(c.lastYear))), [categories]);
+  const historyHeight = `${(maxYear - 2000 + 1) * 5}rem`;
+
   return (
     <div>
       <Header />
@@ -21,7 +25,7 @@ export default function Home() {
           {categories.map((category) => (
             <div key={category.name} className="flex flex-col items-center flex-grow">
               <Category category={category.name} />
-              <History category={category.name} lastYear={category.lastYear} />
+              <History category={category.name} lastYear={category.lastYear} height={historyHeight} />
             </div>
           ))}
         </div>
