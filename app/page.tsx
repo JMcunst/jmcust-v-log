@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Header from '../components/header';
+import Header from '../components/Header';
 import Category from '../components/Category';
 import History from '../components/History';
 import Year from '../components/Year';
